@@ -1,0 +1,43 @@
+
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "io.grpc.examples.recommend";
+option java_outer_classname = "RecommendProto";
+option objc_class_prefix = "RECOMMEND";
+
+package recommend;
+
+// The greeting service definition.
+service Recommend {
+  // Sends a greeting
+  rpc movie_recommend (UserRequest) returns (MovieResponse) {}
+}
+
+// The request message containing the user's name.
+message UserRequest{
+  int32 userId=1;
+}
+message Tag{
+  int32 tagId=1;
+  string tag=2;
+  string timestamp=3;
+}
+message Rating{
+  int32 userId=1;
+  int32 movieId=2;
+  float rating=3;
+  string timestamp=4;
+}
+
+message Movie{
+  int32 movieId=1;
+  string title=2;
+  repeated string genres=3;
+}
+message MovieResponse{
+  repeated Movie movie=1;
+}
+
+
+
